@@ -123,7 +123,7 @@ celochain_epoch_countdown_seconds 70735.0
 celochain_web3_client_info{signer="0x123456789AbCdEf",version="celo/v1.0.1-stable/linux-amd64/go1.13.14"} 1.0
 # HELP celochain_exporter_info Exporter information
 # TYPE celochain_exporter_info gauge
-celochain_exporter_info{up_since="1600722537.4102187",version="1.0.0"} 1.0
+celochain_exporter_info{signer="0x123456789AbCdEf",version="1.1.1"} 1.0
 ```
 
 ## Prometheus Configuration
@@ -137,11 +137,13 @@ Example job config:
     scrape_interval: 5s
     metrics_path: /metrics
     static_configs:
-      - targets: ['172.17.0.5:8000', '172.17.0.6:8000']
+      - targets: ['172.17.0.5:8000']
 ```
 
 
 
 ## Grafana Dashboard
 
-- todo
+![](grafana.PNG)
+
+Import grafana-dashboard.json into your Grafana instance.
