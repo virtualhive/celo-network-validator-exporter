@@ -20,7 +20,7 @@ class CeloWeb3:
 
     def __wait_until_node_synced(self, w3):
         # check if last block on the node is older than 30 seconds
-        latest_block = w3.eth.getBlock('latest')
+        latest_block = w3.eth.get_block('latest')
         time_difference = int(time.time()) - latest_block['timestamp']
         if time_difference > 30:
             logging.warning('Latest block of the connected node is older than 30 sec (#%i - %i sec ago)...' % (latest_block['number'], time_difference))
@@ -32,7 +32,7 @@ class CeloWeb3:
                     time.sleep(10)
                 else:
                     logging.info('Node is not syncing.')
-                    latest_block = w3.eth.getBlock('latest')
+                    latest_block = w3.eth.get_block('latest')
                     time_difference = int(time.time()) - latest_block['timestamp']
                     # check if block is fresh
                     if time_difference < 15:
@@ -101,7 +101,7 @@ class CeloWeb3:
         return self.election
 
     def get_latest_block(self):
-        latest_block = self.get_web3_connection().eth.getBlock('latest')
+        latest_block = self.get_web3_connection().eth.get_block('latest')
         return latest_block
 
     def get_validator_count(self, block_number):
@@ -135,7 +135,7 @@ class CeloWeb3:
         return signer_address_index
 
     def get_epoch_info(self):
-        latest_block = self.get_web3_connection().eth.getBlock('latest')
+        latest_block = self.get_web3_connection().eth.get_block('latest')
         validators = self.get_validators_contract()
         epoch_size = validators.functions.getEpochSize().call()
         epoch_number = (latest_block['number'] // epoch_size) + 1
