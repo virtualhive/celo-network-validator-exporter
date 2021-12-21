@@ -26,5 +26,5 @@ def print_welcome():
     print("""                         `\@@\/@@/´""")
     print("""                             `´""")
     print()
-    print("""                      VIRTUAL HIVE 2020""")
+    print("""                      VIRTUAL HIVE 2021""")
     print()
